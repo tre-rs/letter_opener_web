@@ -41,6 +41,11 @@ module LetterOpenerWeb
       @rich_text ||= adjust_link_targets(read_file(:rich))
     end
 
+    def to
+      rich_text =~ /<dt>To:<\/dt>\s*<dd>(.*)<\/dd>/
+      $1 || id
+    end
+
     def to_param
       id
     end
